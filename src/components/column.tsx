@@ -34,17 +34,10 @@ const Column = ({ status, showInput, onShowInput, onHideInput, inputKey }: Colum
         const match = task.id.match(/^SM-(\d+)$/);
         return match ? parseInt(match[1], 10) : null;
       })
-      .filter((num): num is number => num !== null)
-      .sort((a, b) => a - b);
+      .filter((num): num is number => num !== null);
 
-    let nextIdNumber = 1;
-    for (const num of usedNumbers) {
-      if (num === nextIdNumber) {
-        nextIdNumber++;
-      } else if (num > nextIdNumber) {
-        break;
-      }
-    }
+    const maxIdNumber = usedNumbers.length > 0 ? Math.max(...usedNumbers) : 0;
+    const nextIdNumber = maxIdNumber + 1;
     const newId = `SM-${nextIdNumber}`;
 
     const idExists = allTasks.some((task) => task.id === newId);
