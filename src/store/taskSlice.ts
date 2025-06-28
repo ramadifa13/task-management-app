@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Task, Status } from "@/types/task";
+import SecureStorage from "react-secure-storage";
 
 const initialState: Task[] = [];
 
 const persist = (tasks: Task[]) => {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  SecureStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
 export const taskSlice = createSlice({

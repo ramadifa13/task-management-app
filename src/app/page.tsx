@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask, moveTask } from "@/store/taskSlice";
 import { Status, Task } from "@/types/task";
+import SecureStorage from "react-secure-storage";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -21,9 +22,9 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const saved = localStorage.getItem("tasks");
+    const saved = SecureStorage.getItem("tasks");
     if (saved) {
-      const tasks = JSON.parse(saved);
+      const tasks = JSON.parse(saved as string);
       tasks.forEach((task: Task) => dispatch(addTask(task)));
     }
   }, [dispatch]);

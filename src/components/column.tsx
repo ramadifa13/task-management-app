@@ -11,8 +11,13 @@ import { useState, useEffect } from "react";
 import { Plus } from "lucide-react";
 import { statusColorMap } from "@/utils/statusColorMap";
 
-
-const Column = ({ status, showInput, onShowInput, onHideInput, inputKey }: ColumnProps) => {
+const Column = ({
+  status,
+  showInput,
+  onShowInput,
+  onHideInput,
+  inputKey,
+}: ColumnProps) => {
   const dispatch = useDispatch();
 
   const tasks = useSelector((state: RootState) =>
