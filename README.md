@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Task Management Application
 
-## Getting Started
+A Kanban-style task management app built with [Next.js](https://nextjs.org), [Redux Toolkit](https://redux-toolkit.js.org/), and [Tailwind CSS](https://tailwindcss.com/).
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Setup Instructions
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ramadifa13/task-management-app.git
+   cd task-management-application
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   # or
+   bun install
+   ```
+
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+
+4. **Open the app:**
+   Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## Project Structure & Approach
+
+### State Management
+
+- **Redux Toolkit** is used for global state management, handling all task operations (add, update, delete, move).
+- The Redux store is provided to the app via a custom `StoreProvider` ([src/store/storeProvider.tsx](src/store/storeProvider.tsx)).
+
+### Storage Solution
+
+- **Local Storage** is used to persist tasks between sessions.
+- On app load, tasks are loaded from local storage and dispatched to the Redux store.
+
+### UI Components
+
+- **Radix UI** is used for accessible dialogs and selects.
+- **Lucide React** provides icons.
+- **@hello-pangea/dnd** enables drag-and-drop for Kanban columns.
+- **Tailwind CSS** is used for styling.
+
+### Folder Structure
+
+```
+src/
+  app/           # Next.js app directory (entry, layout, global styles)
+  components/    # Reusable UI components (Column, TaskCard, TaskModal)
+  store/         # Redux store, slice, and provider
+  types/         # TypeScript types for tasks and props
+  utils/         # Utility maps for priority and status
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Data Handling
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Tasks are uniquely identified and stored in Redux state.
+- All CRUD operations and drag-and-drop reordering are handled via Redux actions.
+- UI updates are immediate and persisted to local storage.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Known Issues / Time Limitations
 
-To learn more about Next.js, take a look at the following resources:
+- **No task due dates or subtasks:** Only basic fields (title, description, priority, status).
+- **No advanced filtering or search.**
+- **Minimal validation:** Task title is required, but no further validation.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Possible Improvements
 
-## Deploy on Vercel
+Given more time, the following enhancements could be made:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Task ordering:** Persist custom ordering within columns.
+- **Task details:** Add due dates, labels, attachments, and comments.
+- **Unit and integration tests:** Add automated tests for components and logic.
+- **Performance:** Optimize rendering for large numbers of tasks.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+Created by Ramadifa Esa Putra
